@@ -22,6 +22,12 @@ namespace Divinus.Domain.Services
 
         public AddFoodResponse AddFood(AddFoodRequest request)
         {
+            if(request == null)
+            {
+                AddNotification("AddFoodRequest", "request inválido");
+                return null;
+            }
+
             var food = new Food(request.Name, request.Description, request.Price, request.ImageName);
 
             if(this.IsInvalid())
@@ -29,12 +35,50 @@ namespace Divinus.Domain.Services
                 return null;
             }
 
-            return (AddFoodResponse)food;
+            return (AddFoodResponse)_repositoryFood.AddFood(food);
+        }
+
+        public void DeleteFood(Guid id)
+        {
+            throw new NotImplementedException();
         }
 
         public IEnumerable<FoodResponse> GetAllFood()
         {
             return _repositoryFood.GetAllFood().ToList().Select(food => (FoodResponse)food).ToList();
+        }
+
+        public FoodResponse GetFoodById(Guid id)
+        {
+            return (FoodResponse)_repositoryFood.GetFoodById(id);
+        }
+
+        public FoodResponse UpdateFood(UpdateFoodRequest request)
+        {
+            if(request == null)
+            {
+                AddNotification("UpdateFoodRequest", "Requisição inválida");
+                return null;
+            }
+
+            Food food = _repositoryFood.GetFoodById(request.Id);
+
+            if(food == null)
+            {
+                AddNotification("Id", "Dados não encontrados");
+                return null;
+            }
+
+            food.Update(food.Name, food.Description, food.Price, food.ImageName);
+
+            AddNotifications(food);
+
+            if(IsInvalid())
+            {
+                return null;
+            }
+
+            return (FoodResponse)_repositoryFood.UpdateFood(food);
         }
     }
 }

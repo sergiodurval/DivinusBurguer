@@ -100,6 +100,7 @@
     <Compile Include="Arguments\Food\AddFoodRequest.cs" />
     <Compile Include="Arguments\Food\AddFoodResponse.cs" />
     <Compile Include="Arguments\Food\FoodResponse.cs" />
+    <Compile Include="Arguments\Food\UpdateFoodRequest.cs" />
     <Compile Include="Entities\Food.cs" />
     <Compile Include="Interfaces\Arguments\IRequest.cs" />
     <Compile Include="Interfaces\Arguments\IResponse.cs" />

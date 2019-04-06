@@ -9,5 +9,11 @@ namespace Divinus.Domain.Interfaces.Services
         AddFoodResponse AddFood(AddFoodRequest request);
 
         IEnumerable<FoodResponse> GetAllFood();
+
+        FoodResponse GetFoodById(Guid id);
+
+        FoodResponse UpdateFood(UpdateFoodRequest request);
+
+        void DeleteFood(Guid id);
     }
 }
