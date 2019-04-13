@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.539
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divinus.Domain", "Divinus.Domain\Divinus.Domain.csproj", "{5A92263A-C46B-406F-8050-BDAE84501EDD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divinus.Infra", "Divinus.Infra\Divinus.Infra.csproj", "{1A17B437-57D3-404C-A699-3676C7660A53}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5A92263A-C46B-406F-8050-BDAE84501EDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A92263A-C46B-406F-8050-BDAE84501EDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A92263A-C46B-406F-8050-BDAE84501EDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A17B437-57D3-404C-A699-3676C7660A53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A17B437-57D3-404C-A699-3676C7660A53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A17B437-57D3-404C-A699-3676C7660A53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A17B437-57D3-404C-A699-3676C7660A53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
