@@ -28,7 +28,7 @@ namespace Divinus.Domain.Services
                 return null;
             }
 
-            var food = new Food(request.Name, request.Description, request.Price, request.ImageName);
+            var food = new Food(request.Name, request.Description, request.Price, request.ImageName, request.Category);
 
             if(this.IsInvalid())
             {
@@ -69,7 +69,7 @@ namespace Divinus.Domain.Services
                 return null;
             }
 
-            food.Update(food.Name, food.Description, food.Price, food.ImageName);
+            food.Update(food.Name, food.Description, food.Price, food.ImageName,food.Category);
 
             AddNotifications(food);
 

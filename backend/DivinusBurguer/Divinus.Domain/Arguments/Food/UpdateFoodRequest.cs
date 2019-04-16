@@ -17,5 +17,7 @@ namespace Divinus.Domain.Arguments.Food
         public decimal Price { get; private set; }
 
         public string ImageName { get; private set; }
+
+        public string Category { get; set; }
     }
 }

@@ -47,13 +47,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201904160052090_CriandoBanco.cs" />
+    <Compile Include="Migrations\201904160052090_CriandoBanco.Designer.cs">
+      <DependentUpon>201904160052090_CriandoBanco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904160126503_AdicionandoNovaColuna.cs" />
+    <Compile Include="Migrations\201904160126503_AdicionandoNovaColuna.Designer.cs">
+      <DependentUpon>201904160126503_AdicionandoNovaColuna.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\DivinusContext.cs" />
     <Compile Include="Persistence\Map\MapFood.cs" />
+    <Compile Include="Persistence\Repositories\RepositoryFood.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Persistence\Repositories\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
@@ -63,6 +71,14 @@
       <Project>{5A92263A-C46B-406F-8050-BDAE84501EDD}</Project>
       <Name>Divinus.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201904160052090_CriandoBanco.resx">
+      <DependentUpon>201904160052090_CriandoBanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904160126503_AdicionandoNovaColuna.resx">
+      <DependentUpon>201904160126503_AdicionandoNovaColuna.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

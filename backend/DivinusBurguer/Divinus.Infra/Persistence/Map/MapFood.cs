@@ -12,6 +12,7 @@ namespace Divinus.Infra.Persistence.Map
             Property(p => p.Description).HasMaxLength(250).IsRequired();
             Property(p => p.Price).IsRequired();
             Property(p => p.ImageName).HasMaxLength(250).IsRequired();
+            Property(p => p.Category).HasMaxLength(250).IsRequired();
         }
     }
 }

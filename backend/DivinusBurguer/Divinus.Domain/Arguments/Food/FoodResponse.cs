@@ -20,6 +20,8 @@ namespace Divinus.Domain.Arguments.Food
 
         public string ImageName { get; private set; }
 
+        public string Category { get; set; }
+
         public static explicit operator FoodResponse(Entities.Food entidade)
         {
             return new FoodResponse()
@@ -28,7 +30,8 @@ namespace Divinus.Domain.Arguments.Food
                 Description = entidade.Description,
                 ImageName = entidade.ImageName,
                 Name = entidade.Name,
-                Price = entidade.Price
+                Price = entidade.Price,
+                Category = entidade.Category
             };
         }
     }
