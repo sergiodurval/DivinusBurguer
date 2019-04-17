@@ -1,4 +1,5 @@
-﻿using Divinus.Domain.Arguments.Food;
+﻿using Divinus.Domain.Arguments.Base;
+using Divinus.Domain.Arguments.Food;
 using Divinus.Domain.Entities;
 using Divinus.Domain.Interfaces.Repositories;
 using Divinus.Domain.Interfaces.Services;
@@ -35,22 +36,38 @@ namespace Divinus.Domain.Services
                 return null;
             }
 
-            return (AddFoodResponse)_repositoryFood.AddFood(food);
+            return (AddFoodResponse)_repositoryFood.Adicionar(food);
         }
 
-        public void DeleteFood(Guid id)
+        public ResponseBase DeleteFood(Guid id)
         {
-            throw new NotImplementedException();
+            if(id == null)
+            {
+                AddNotification("Id", "Obrigatório");
+                return null;
+            }
+
+            var food = _repositoryFood.ObterPorId(id);
+
+            if(food == null)
+            {
+                AddNotification("Item", "Não encontrado");
+                return null;
+            }
+
+            _repositoryFood.Remover(food);
+
+            return new ResponseBase();
         }
 
         public IEnumerable<FoodResponse> GetAllFood()
         {
-            return _repositoryFood.GetAllFood().ToList().Select(food => (FoodResponse)food).ToList();
+           return _repositoryFood.Listar().ToList().Select(food => (FoodResponse)food).ToList();
         }
 
         public FoodResponse GetFoodById(Guid id)
         {
-            return (FoodResponse)_repositoryFood.GetFoodById(id);
+            return (FoodResponse)_repositoryFood.ObterPorId(id);
         }
 
         public FoodResponse UpdateFood(UpdateFoodRequest request)
@@ -61,7 +78,7 @@ namespace Divinus.Domain.Services
                 return null;
             }
 
-            Food food = _repositoryFood.GetFoodById(request.Id);
+            Food food = _repositoryFood.ObterPorId(request.Id);
 
             if(food == null)
             {
@@ -78,7 +95,9 @@ namespace Divinus.Domain.Services
                 return null;
             }
 
-            return (FoodResponse)_repositoryFood.UpdateFood(food);
+            return (FoodResponse)_repositoryFood.Editar(food);
         }
+
+
     }
 }

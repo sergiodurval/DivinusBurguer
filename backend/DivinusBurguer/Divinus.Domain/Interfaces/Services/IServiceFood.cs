@@ -1,4 +1,5 @@
-﻿using Divinus.Domain.Arguments.Food;
+﻿using Divinus.Domain.Arguments.Base;
+using Divinus.Domain.Arguments.Food;
 using System;
 using System.Collections.Generic;
 
@@ -14,6 +15,6 @@ namespace Divinus.Domain.Interfaces.Services
 
         FoodResponse UpdateFood(UpdateFoodRequest request);
 
-        void DeleteFood(Guid id);
+        ResponseBase DeleteFood(Guid id);
     }
 }

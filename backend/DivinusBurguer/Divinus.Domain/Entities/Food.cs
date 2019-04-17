@@ -1,9 +1,10 @@
-﻿using prmToolkit.NotificationPattern;
+﻿using Divinus.Domain.Entities.Base;
+using prmToolkit.NotificationPattern;
 using System;
 
 namespace Divinus.Domain.Entities
 {
-    public class Food : Notifiable
+    public class Food : EntityBase
     {
         public Food(string name, string description, decimal price, string imageName , string category)
         {
@@ -37,7 +38,7 @@ namespace Divinus.Domain.Entities
                .IfNullOrEmpty(x => x.Category, "A categoria do item é obrigatória");
         }
 
-        public Guid Id { get; private set; }
+        
 
         public string Name { get; private set; }
 

@@ -97,13 +97,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Arguments\Base\ResponseBase.cs" />
     <Compile Include="Arguments\Food\AddFoodRequest.cs" />
     <Compile Include="Arguments\Food\AddFoodResponse.cs" />
     <Compile Include="Arguments\Food\FoodResponse.cs" />
     <Compile Include="Arguments\Food\UpdateFoodRequest.cs" />
+    <Compile Include="Entities\Base\EntityBase.cs" />
     <Compile Include="Entities\Food.cs" />
     <Compile Include="Interfaces\Arguments\IRequest.cs" />
     <Compile Include="Interfaces\Arguments\IResponse.cs" />
+    <Compile Include="Interfaces\Repositories\Base\IRepositoryBase.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryFood.cs" />
     <Compile Include="Interfaces\Services\IServiceFood.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

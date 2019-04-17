@@ -3,41 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using Divinus.Domain.Entities;
 using Divinus.Domain.Interfaces.Repositories;
+using Divinus.Infra.Persistence.Repositories.Base;
 
 namespace Divinus.Infra.Persistence.Repositories
 {
-    public class RepositoryFood : IRepositoryFood
+    public class RepositoryFood : RepositoryBase<Food,Guid> , IRepositoryFood
     {
         protected readonly DivinusContext _context;
 
-        public RepositoryFood(DivinusContext context)
+        public RepositoryFood(DivinusContext context) : base(context)
         {
             _context = context;
-        }
-
-        public Food AddFood(Food food)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteFood(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Food> GetAllFood()
-        {
-            return _context.Foods.ToList();
-        }
-
-        public Food GetFoodById(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Food UpdateFood(Food food)
-        {
-            throw new NotImplementedException();
         }
     }
 }
