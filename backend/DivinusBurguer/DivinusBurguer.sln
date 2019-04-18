@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divinus.Infra", "Divinus.In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divinus.IoC", "Divinus.IoC\Divinus.IoC.csproj", "{AF87B2EF-DEF4-4913-87AB-07DCAACD648D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divinus.Api", "Divinus.Api\Divinus.Api.csproj", "{815BF647-987A-4B57-A7B1-5F3E09E4018C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{AF87B2EF-DEF4-4913-87AB-07DCAACD648D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF87B2EF-DEF4-4913-87AB-07DCAACD648D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF87B2EF-DEF4-4913-87AB-07DCAACD648D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{815BF647-987A-4B57-A7B1-5F3E09E4018C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{815BF647-987A-4B57-A7B1-5F3E09E4018C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{815BF647-987A-4B57-A7B1-5F3E09E4018C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{815BF647-987A-4B57-A7B1-5F3E09E4018C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
