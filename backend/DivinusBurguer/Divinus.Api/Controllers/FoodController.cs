@@ -36,7 +36,7 @@ namespace Divinus.Api.Controllers
         }
 
         [Route("Update")]
-        [HttpPost]
+        [HttpPut]
         public async Task<HttpResponseMessage> Update(UpdateFoodRequest request)
         {
             try
@@ -85,7 +85,7 @@ namespace Divinus.Api.Controllers
         }
 
         [Route("Delete")]
-        [HttpPost]
+        [HttpDelete]
         public async Task<HttpResponseMessage> Delete(Guid id)
         {
             try
