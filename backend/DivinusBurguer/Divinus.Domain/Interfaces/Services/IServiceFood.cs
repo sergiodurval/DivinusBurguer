@@ -1,11 +1,12 @@
 ﻿using Divinus.Domain.Arguments.Base;
 using Divinus.Domain.Arguments.Food;
+using Divinus.Domain.Services.Base;
 using System;
 using System.Collections.Generic;
 
 namespace Divinus.Domain.Interfaces.Services
 {
-    public interface IServiceFood
+    public interface IServiceFood : IServiceBase
     {
         AddFoodResponse AddFood(AddFoodRequest request);
 

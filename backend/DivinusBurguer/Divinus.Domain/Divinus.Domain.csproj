@@ -110,6 +110,7 @@
     <Compile Include="Interfaces\Repositories\IRepositoryFood.cs" />
     <Compile Include="Interfaces\Services\IServiceFood.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Base\IServiceBase.cs" />
     <Compile Include="Services\ServiceFood.cs" />
   </ItemGroup>
   <ItemGroup>
