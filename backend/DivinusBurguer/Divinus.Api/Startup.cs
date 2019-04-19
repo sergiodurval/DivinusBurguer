@@ -23,7 +23,7 @@ namespace Divinus.Api
             HttpConfiguration config = new HttpConfiguration();
 
             // Swagger
-            //SwaggerConfig.Register(config);
+            SwaggerConfig.Register(config);
 
             // Configure Dependency Injection
             var container = new Unity.UnityContainer();
