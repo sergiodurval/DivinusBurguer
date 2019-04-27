@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using Divinus.Domain.Entities;
 using Divinus.Domain.Interfaces.Repositories;
@@ -11,9 +12,14 @@ namespace Divinus.Infra.Persistence.Repositories
     {
         protected readonly DivinusContext _context;
 
-        public RepositoryFood(DivinusContext context) : base(context)
+        //public RepositoryFood(DivinusContext context) : base(context)
+        //{
+        //    _context = context;
+        //}
+
+        public RepositoryFood(DbContext context) : base(context)
         {
-            _context = context;
+
         }
     }
 }

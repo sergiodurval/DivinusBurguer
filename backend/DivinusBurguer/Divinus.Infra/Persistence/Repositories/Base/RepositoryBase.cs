@@ -67,21 +67,18 @@ namespace Divinus.Infra.Persistence.Repositories.Base
         public TEntidade Adicionar(TEntidade entidade)
         {
             _context.Set<TEntidade>().Add(entidade);
-            _context.SaveChanges();
             return entidade;
         }
 
         public TEntidade Editar(TEntidade entidade)
         {
             _context.Entry(entidade).State = System.Data.Entity.EntityState.Modified;
-            _context.SaveChanges();
             return entidade;
         }
 
         public void Remover(TEntidade entidade)
         {
             _context.Set<TEntidade>().Remove(entidade);
-            _context.SaveChanges();
         }
 
         

@@ -38,6 +38,11 @@ namespace Divinus.Domain.Entities
                .IfNullOrEmpty(x => x.Category, "A categoria do item é obrigatória");
         }
 
+        protected Food()
+        {
+
+        }
+
         
 
         public string Name { get; private set; }

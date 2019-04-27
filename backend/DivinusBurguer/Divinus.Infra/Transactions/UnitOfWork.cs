@@ -1,12 +1,13 @@
 ﻿using Divinus.Infra.Persistence;
+using System.Data.Entity;
 
 namespace Divinus.Infra.Transactions
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly DivinusContext _context;
+        private DbContext _context;
 
-        public UnitOfWork(DivinusContext context)
+        public UnitOfWork(DbContext context)
         {
             _context = context;
         }
