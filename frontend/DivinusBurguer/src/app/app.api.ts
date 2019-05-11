@@ -1,0 +1,1 @@
+export const DIVINUSBURGUER_API = 'http://localhost:1281'

@@ -6,11 +6,14 @@ import {ROUTES} from './app.routes'
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
+import { CardapioComponent } from './cardapio/cardapio.component';
+import { FoodService } from './cardapio/food.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    CardapioComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +21,7 @@ import { RouterModule } from '@angular/router';
     HttpModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [],
+  providers: [FoodService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
