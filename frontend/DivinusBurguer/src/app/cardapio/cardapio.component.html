@@ -23,24 +23,24 @@
   </div>
 </nav>
 
-<body style="background: white">
-    <br>
-    <div class="container">
-      <div class="row">
-        <div *ngFor="let food of foods" class="col-sm-4">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src='assets/{{food.imageName}}' alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">{{food.name}}</h5>
-                  <p class="card-text">{{food.description}}</p>
-                  <p>R${{food.price}}</p>
-                  <a href="#" class="btn btn-primary">Adicionar ao carrinho</a>
-                </div>
+<div style="background: white;">
+  <br>
+  <div class="container">
+    <div class="row">
+      <div *ngFor="let food of foods" class="col-sm-4">
+          <div class="card text-center" style="width: 18rem;">
+              <img class="card-img-top smallimg mx-auto" src='assets/{{food.imageName}}' alt="{{food.name}}" style="height: 286px;width: 190.66px">
+              <div class="card-body">
+                <h5 class="card-title">{{food.name}}</h5>
+                <p class="card-text">{{food.description}}</p>
+                <p>{{food.price |  currency:'BRL':true}}</p>
+                <a href="#" class="btn btn-primary">Adicionar ao carrinho</a>
               </div>
-              <br>
-        </div>
+            </div>
+            <br>
       </div>
     </div>
-</body>
+  </div>
+</div>
 
 

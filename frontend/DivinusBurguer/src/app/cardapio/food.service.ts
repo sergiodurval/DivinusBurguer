@@ -14,7 +14,7 @@ export class FoodService{
     constructor(private http:Http){}
 
     foods(): Observable<Food[]>{
-        return this.http.get(`${DIVINUSBURGUER_API}/api/food/GetAll`)
+        return this.http.get(`${DIVINUSBURGUER_API}/api/food/GetAllOrdered`)
         .map(response => response.json())
     }
 }
