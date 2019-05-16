@@ -12,6 +12,8 @@ namespace Divinus.Domain.Interfaces.Services
 
         IEnumerable<FoodResponse> GetAllFood();
 
+        IEnumerable<FoodResponse> GetAllFoodOrdered();
+
         FoodResponse GetFoodById(Guid id);
 
         FoodResponse UpdateFood(UpdateFoodRequest request);

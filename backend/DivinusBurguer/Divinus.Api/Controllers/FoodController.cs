@@ -84,6 +84,22 @@ namespace Divinus.Api.Controllers
             }
         }
 
+        [Route("GetAllOrdered")]
+        [HttpGet]
+        public async Task<HttpResponseMessage> GetAllOrdered()
+        {
+            try
+            {
+                var response = _serviceFood.GetAllFoodOrdered();
+                return await ResponseAsync(response, _serviceFood);
+            }
+            catch (Exception ex)
+            {
+
+                return await ResponseExceptionAsync(ex);
+            }
+        }
+
         [Route("Delete")]
         [HttpDelete]
         public async Task<HttpResponseMessage> Delete(Guid id)

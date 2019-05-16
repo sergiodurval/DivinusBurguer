@@ -65,6 +65,11 @@ namespace Divinus.Domain.Services
            return _repositoryFood.Listar().ToList().Select(food => (FoodResponse)food).ToList();
         }
 
+        public IEnumerable<FoodResponse> GetAllFoodOrdered()
+        {
+            return _repositoryFood.Listar().ToList().Select(food => (FoodResponse)food).OrderByDescending(x => x.Category == "Hamburguer").ToList();
+        }
+
         public FoodResponse GetFoodById(Guid id)
         {
             return (FoodResponse)_repositoryFood.ObterPorId(id);
