@@ -12,13 +12,15 @@ import { NotificacaoService } from './notificacao/notificacao.service'
 
 import { ToastyModule } from 'ng2-toasty'
 import { NotificacaoComponent } from './notificacao/notificacao.component';
+import { CarrinhoComponent } from './carrinho/carrinho.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CardapioComponent,
-    NotificacaoComponent
+    NotificacaoComponent,
+    CarrinhoComponent
   ],
   imports: [
     BrowserModule,
