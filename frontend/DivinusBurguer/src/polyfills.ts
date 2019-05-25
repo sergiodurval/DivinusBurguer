@@ -21,6 +21,8 @@ import 'zone.js/dist/zone';
 import 'intl'
 import 'intl/locale-data/jsonp/pt-BR.js'
 
+
+
 // If you need to support the browsers/features below, uncomment the import
 // and run `npm install import-name-here';
 // Learn more in https://angular.io/docs/ts/latest/guide/browser-support.html

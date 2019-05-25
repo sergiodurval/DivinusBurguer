@@ -12,6 +12,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/animations": "^4.0.0",
     "@angular/common": "^2.3.1",
     "@angular/compiler": "^2.3.1",
     "@angular/core": "^2.3.1",
@@ -23,8 +24,11 @@
     "bootstrap": "^4.3.1",
     "core-js": "^2.4.1",
     "intl": "^1.2.5",
+    "ng2-notify-popup": "^0.1.25",
+    "ng2-toasty": "^4.0.3",
     "rxjs": "^5.0.1",
     "ts-helpers": "^1.1.1",
+    "web-animations-js": "^2.3.1",
     "zone.js": "^0.7.2"
   },
   "devDependencies": {

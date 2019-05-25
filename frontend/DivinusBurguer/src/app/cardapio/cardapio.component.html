@@ -34,7 +34,7 @@
                 <h5 class="card-title">{{food.name}}</h5>
                 <p class="card-text">{{food.description}}</p>
                 <p>{{food.price |  currency:'BRL':true}}</p>
-                <a href="#" class="btn btn-primary">Adicionar ao carrinho</a>
+                <button class="btn btn-primary" value={{food.id}} #id (click)="addCart(id.value)">Adicionar ao carrinho</button>
               </div>
             </div>
             <br>
@@ -42,5 +42,8 @@
     </div>
   </div>
 </div>
+<app-notificacao></app-notificacao>
+
+
 
 

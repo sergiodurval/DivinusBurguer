@@ -8,20 +8,26 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { CardapioComponent } from './cardapio/cardapio.component';
 import { FoodService } from './cardapio/food.service';
+import { NotificacaoService } from './notificacao/notificacao.service'
+
+import { ToastyModule } from 'ng2-toasty'
+import { NotificacaoComponent } from './notificacao/notificacao.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    CardapioComponent
+    CardapioComponent,
+    NotificacaoComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    ToastyModule.forRoot(),
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [FoodService,{provide:LOCALE_ID,useValue:'pt-BR'}],
+  providers: [FoodService,NotificacaoService,{provide:LOCALE_ID,useValue:'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
