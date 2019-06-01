@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Injectable } from '@angular/core';
 import { Food } from './food.model';
 import { FoodService } from './food.service';
 import { NotificacaoService } from 'app/notificacao/notificacao.service';
+import { CarrinhoService } from 'app/carrinho/carrinho.service';
 
 
 @Component({
@@ -14,8 +15,10 @@ import { NotificacaoService } from 'app/notificacao/notificacao.service';
 export class CardapioComponent implements OnInit {
 
   foods : Food[]
+  itemSelecionado : Food
 
-  constructor(private foodService:FoodService , private notificationService:NotificacaoService) { }
+  constructor(private foodService:FoodService , private notificationService:NotificacaoService,
+              private carrinhoService:CarrinhoService) { }
 
   ngOnInit() {
     this.foodService.foods()
@@ -25,7 +28,9 @@ export class CardapioComponent implements OnInit {
 
   addCart(id:string):void{
      this.notificationService.notificar(this.getName(id));
-     console.log(id);
+     this.itemSelecionado = this.getFood(id)
+     console.log(this.itemSelecionado)
+     this.carrinhoService.adicionarCarrinho(this.itemSelecionado)
   }
 
   getName(id:string):string{
@@ -34,6 +39,14 @@ export class CardapioComponent implements OnInit {
          return food.name;
        }
      }
+  }
+
+  getFood(id:string):Food{
+    for(let food of this.foods){
+       if(food.id == id){
+         return food;
+       }
+    }
   }
 
 }

@@ -29,7 +29,7 @@ export class NotificacaoComponent implements OnInit {
         title: this.title,
         msg: "Adicionado ao carrinho",
         showClose: true,
-        timeout: 5000,
+        timeout: 2000,
         theme: 'bootstrap',
         onAdd: (toast:ToastData) => {
             console.log('Toast ' + toast.id + ' has been added!');

@@ -1,4 +1,4 @@
-export interface Food{
+export class Food{
     id:string
     name:string
     description:string

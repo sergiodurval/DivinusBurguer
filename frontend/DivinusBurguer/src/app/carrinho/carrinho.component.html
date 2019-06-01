@@ -2,10 +2,10 @@
   <a class="navbar-brand" href="#">DivinusBurguer</a>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="#">Home</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" [routerLink]="['/carrinho']">Meu carrinho<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
@@ -36,35 +36,31 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngFor="let item of itemCarrinho ">
                 <td data-th="Product">
                   <div class="row">
-                    <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
                     <div class="col-sm-10">
-                      <h4 class="nomargin">Product 1</h4>
-                      <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
+                      <h4 class="nomargin">{{item.food.name}}</h4>
+                      <p>{{item.food.description}}</p>
                     </div>
                   </div>
                 </td>
-                <td data-th="Price">$150.00</td>
+                <td data-th="Price">{{item.food.price | currency: 'BRL':true}}</td>
                 <td data-th="Quantity">
-                  <input type="number" class="form-control text-center" value="1">
+                  <input type="number" class="form-control text-center" value={{item.quantidade}}>
                 </td>
-                <td data-th="Subtotal" class="text-center">150.00</td>
+                <td data-th="Subtotal" class="text-center">{{item.quantidade * item.food.price | currency:'BRL':true}}</td>
                 <td class="actions" data-th="">
-                  <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-                  <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
+                  <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i>+</button>
+                  <button class="btn btn-danger btn-sm" value={{item.food.id}} #id (click)="removerItem(id.value)"><i class="fa fa-trash-o"></i>-</button>								
                 </td>
               </tr>
             </tbody>
             <tfoot>
-              <tr class="visible-xs">
-                <td class="text-center"><strong>Total 1.99</strong></td>
-              </tr>
               <tr>
                 <td><a [routerLink]="['/cardapio']" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue a compra</a></td>
                 <td colspan="2" class="hidden-xs"></td>
-                <td class="hidden-xs text-center"><strong>Total $150.00</strong></td>
+                <td class="hidden-xs text-center"><strong>Total {{total | currency:'BRL':true}}</strong></td>
                 <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
               </tr>
             </tfoot>

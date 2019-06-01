@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
 import { CardapioComponent } from './cardapio/cardapio.component';
 import { FoodService } from './cardapio/food.service';
 import { NotificacaoService } from './notificacao/notificacao.service'
-
+import { CarrinhoService } from './carrinho/carrinho.service'
 import { ToastyModule } from 'ng2-toasty'
 import { NotificacaoComponent } from './notificacao/notificacao.component';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
@@ -29,7 +29,7 @@ import { CarrinhoComponent } from './carrinho/carrinho.component';
     ToastyModule.forRoot(),
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [FoodService,NotificacaoService,{provide:LOCALE_ID,useValue:'pt-BR'}],
+  providers: [FoodService,NotificacaoService,CarrinhoService,{provide:LOCALE_ID,useValue:'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
