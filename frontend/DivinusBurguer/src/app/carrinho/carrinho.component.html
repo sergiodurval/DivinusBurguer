@@ -47,11 +47,11 @@
                 </td>
                 <td data-th="Price">{{item.food.price | currency: 'BRL':true}}</td>
                 <td data-th="Quantity">
-                  <input type="number" class="form-control text-center" value={{item.quantidade}}>
+                  <input type="number" class="form-control text-center" value={{item.quantidade}} disabled>
                 </td>
                 <td data-th="Subtotal" class="text-center">{{item.quantidade * item.food.price | currency:'BRL':true}}</td>
                 <td class="actions" data-th="">
-                  <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i>+</button>
+                  <button class="btn btn-info btn-sm" value={{item.food.id}} #id (click)="incrementarItem(id.value)"><i class="fa fa-refresh"></i>+</button>
                   <button class="btn btn-danger btn-sm" value={{item.food.id}} #id (click)="removerItem(id.value)"><i class="fa fa-trash-o"></i>-</button>								
                 </td>
               </tr>
@@ -61,7 +61,7 @@
                 <td><a [routerLink]="['/cardapio']" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue a compra</a></td>
                 <td colspan="2" class="hidden-xs"></td>
                 <td class="hidden-xs text-center"><strong>Total {{total | currency:'BRL':true}}</strong></td>
-                <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+                <td><button class="btn btn-success btn-block" [disabled]="itemCarrinho.length == 0">Checkout</button></td>
               </tr>
             </tfoot>
           </table>

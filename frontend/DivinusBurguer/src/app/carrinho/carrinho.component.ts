@@ -26,15 +26,24 @@ export class CarrinhoComponent implements OnInit {
   }
 
   calculoTotal():void{
+    this.itemCarrinho = this.carrinhoService.ObterItens()
+    this.total = 0
     for(let item of this.itemCarrinho){
-       this.total+= item.food.price
+       this.total += item.food.price * item.quantidade
     }
+    
   }
 
   removerItem(id:string):void{
+    console.log('removeu item: ')
+    console.log(id)
     this.itemCarrinho = this.carrinhoService.removerItemCarrinho(id)
-    this.total = 0
     this.calculoTotal()   
+  }
+
+  incrementarItem(id:string):void{
+    this.itemCarrinho = this.carrinhoService.incrementarQuantidade(id)
+    this.calculoTotal()
   }
   
 

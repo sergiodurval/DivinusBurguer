@@ -1,5 +1,6 @@
 import { ItemCarrinho } from "./itemCarrinho.model";
 import { Food } from "app/cardapio/food.model";
+
 export class CarrinhoService{
 
     
@@ -19,15 +20,29 @@ export class CarrinhoService{
 
     removerItemCarrinho(id:string):ItemCarrinho[]{
      
-     var carrinhoFiltrado : Array<ItemCarrinho> = []
+      for(let item of this.itemCarrinho){
+        if(item.food.id == id){
+          item.quantidade = item.quantidade - 1
+          if(item.quantidade == 0){
+            this.itemCarrinho.splice(this.itemCarrinho.indexOf(item),1)
+          }
+        }
+      }
+      
+      return this.itemCarrinho
+    }
 
-     for(let item of this.itemCarrinho){
-       if(item.food.id != id){
-         carrinhoFiltrado.push(item)
-       }
-     }
+    incrementarQuantidade(id:string):ItemCarrinho[]{
 
-      return this.itemCarrinho = carrinhoFiltrado
+      for(let item of this.itemCarrinho){
+        if(item.food.id == id){
+          item.quantidade = item.quantidade + 1
+          
+        }
+      }
+      
+      return this.itemCarrinho
+
     }
 
 
