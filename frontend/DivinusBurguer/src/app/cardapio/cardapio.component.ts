@@ -3,7 +3,7 @@ import { Food } from './food.model';
 import { FoodService } from './food.service';
 import { NotificacaoService } from 'app/notificacao/notificacao.service';
 import { CarrinhoService } from 'app/carrinho/carrinho.service';
-
+import {ToastyService, ToastyConfig, ToastOptions, ToastData} from 'ng2-toasty';
 
 @Component({
   selector: 'app-cardapio',
@@ -18,7 +18,9 @@ export class CardapioComponent implements OnInit {
   itemSelecionado : Food
 
   constructor(private foodService:FoodService , private notificationService:NotificacaoService,
-              private carrinhoService:CarrinhoService) { }
+              private carrinhoService:CarrinhoService,
+              private toastyService:ToastyService, 
+              private toastyConfig: ToastyConfig) { }
 
   ngOnInit() {
     this.foodService.foods()
@@ -27,10 +29,8 @@ export class CardapioComponent implements OnInit {
 
 
   addCart(id:string):void{
-     this.notificationService.notificar(this.getName(id));
-     this.itemSelecionado = this.getFood(id)
-     console.log(this.itemSelecionado)
-     this.carrinhoService.adicionarCarrinho(this.itemSelecionado)
+     this.carrinhoService.adicionarCarrinho(this.getFood(id))
+     this.addToast(this.getName(id))
   }
 
   getName(id:string):string{
@@ -47,6 +47,24 @@ export class CardapioComponent implements OnInit {
          return food;
        }
     }
+  }
+
+  addToast(title:string) {
+    var toastOptions:ToastOptions = {
+        title: title,
+        msg: "Adicionado ao carrinho",
+        showClose: true,
+        timeout: 2000,
+        theme: 'bootstrap',
+        onAdd: (toast:ToastData) => {
+            console.log('Toast ' + toast.id + ' has been added!');
+        },
+        onRemove: function(toast:ToastData) {
+            console.log('Toast ' + toast.id + ' has been removed!');
+        }
+    };
+    
+    this.toastyService.success(toastOptions);
   }
 
 }
