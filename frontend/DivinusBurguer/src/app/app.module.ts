@@ -13,6 +13,7 @@ import { CarrinhoService } from './carrinho/carrinho.service'
 import { ToastyModule } from 'ng2-toasty'
 import { NotificacaoComponent } from './notificacao/notificacao.component';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CarrinhoComponent } from './carrinho/carrinho.component';
     HomeComponent,
     CardapioComponent,
     NotificacaoComponent,
-    CarrinhoComponent
+    CarrinhoComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
