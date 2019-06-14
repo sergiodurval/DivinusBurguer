@@ -46,4 +46,15 @@ export class CarrinhoService{
     }
 
 
+    calculoTotal():number{
+      
+      let total = 0
+      for(let item of this.itemCarrinho){
+         total += item.food.price * item.quantidade
+      }
+      
+      return total
+    }
+
+
 }
