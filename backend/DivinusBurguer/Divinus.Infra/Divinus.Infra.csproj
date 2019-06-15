@@ -114,10 +114,16 @@
     <Compile Include="Migrations\201904160126503_AdicionandoNovaColuna.Designer.cs">
       <DependentUpon>201904160126503_AdicionandoNovaColuna.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906151711482_CriandoTabelaEndereco.cs" />
+    <Compile Include="Migrations\201906151711482_CriandoTabelaEndereco.Designer.cs">
+      <DependentUpon>201906151711482_CriandoTabelaEndereco.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\DivinusContext.cs" />
+    <Compile Include="Persistence\Map\MapAddress.cs" />
     <Compile Include="Persistence\Map\MapFood.cs" />
     <Compile Include="Persistence\Repositories\Base\RepositoryBase.cs" />
+    <Compile Include="Persistence\Repositories\RepositoryAddress.cs" />
     <Compile Include="Persistence\Repositories\RepositoryFood.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transactions\IUnitOfWork.cs" />
@@ -140,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904160126503_AdicionandoNovaColuna.resx">
       <DependentUpon>201904160126503_AdicionandoNovaColuna.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906151711482_CriandoTabelaEndereco.resx">
+      <DependentUpon>201906151711482_CriandoTabelaEndereco.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

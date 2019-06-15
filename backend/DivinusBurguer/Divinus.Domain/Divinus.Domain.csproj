@@ -34,6 +34,9 @@
     <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="prmToolkit.NotificationPattern, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\prmToolkit.NotificationPattern.1.1.2\lib\netstandard1.0\prmToolkit.NotificationPattern.dll</HintPath>
     </Reference>
@@ -97,20 +100,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Arguments\Address\AddAddressRequest.cs" />
+    <Compile Include="Arguments\Address\AddAddressResponse.cs" />
+    <Compile Include="Arguments\Address\SearchAddressRequest.cs" />
+    <Compile Include="Arguments\Address\SearchAddressResponse.cs" />
     <Compile Include="Arguments\Base\ResponseBase.cs" />
     <Compile Include="Arguments\Food\AddFoodRequest.cs" />
     <Compile Include="Arguments\Food\AddFoodResponse.cs" />
     <Compile Include="Arguments\Food\FoodResponse.cs" />
     <Compile Include="Arguments\Food\UpdateFoodRequest.cs" />
+    <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\Base\EntityBase.cs" />
     <Compile Include="Entities\Food.cs" />
     <Compile Include="Interfaces\Arguments\IRequest.cs" />
     <Compile Include="Interfaces\Arguments\IResponse.cs" />
     <Compile Include="Interfaces\Repositories\Base\IRepositoryBase.cs" />
+    <Compile Include="Interfaces\Repositories\IRepositoryAddress.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryFood.cs" />
+    <Compile Include="Interfaces\Services\IServiceAddress.cs" />
     <Compile Include="Interfaces\Services\IServiceFood.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Base\IServiceBase.cs" />
+    <Compile Include="Services\ServiceAddress.cs" />
     <Compile Include="Services\ServiceFood.cs" />
   </ItemGroup>
   <ItemGroup>

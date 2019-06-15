@@ -32,15 +32,15 @@ namespace Divinus.IoC.Unity
             //container.RegisterType(typeof(IServiceBase<,>), typeof(ServiceBase<,>));
 
             container.RegisterType<IServiceFood, ServiceFood>(new HierarchicalLifetimeManager());
-            
+            container.RegisterType<IServiceAddress, ServiceAddress>(new HierarchicalLifetimeManager());
 
 
             //Repository
             container.RegisterType(typeof(IRepositoryBase<,>), typeof(RepositoryBase<,>));
 
             container.RegisterType<IRepositoryFood, RepositoryFood>(new HierarchicalLifetimeManager());
-            
 
+            container.RegisterType<IRepositoryAddress, RepositoryAddress>(new HierarchicalLifetimeManager());
 
 
         }
