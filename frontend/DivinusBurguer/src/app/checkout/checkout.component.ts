@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CarrinhoService } from 'app/carrinho/carrinho.service';
 import { ItemCarrinho } from '../carrinho/itemCarrinho.model';
 import { ToastyService, ToastyConfig, ToastOptions, ToastData } from 'ng2-toasty';
-
+import { AddressService } from './address.service';
+import { Address } from './address.model'
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -15,10 +16,12 @@ export class CheckoutComponent implements OnInit {
   quantidadeItens:number = 0
   valorDesconto:number = 0
   cupom:string
+  address: Address
 
   constructor(private carrinhoService:CarrinhoService,
               private toastyService:ToastyService, 
-              private toastyConfig: ToastyConfig) { }
+              private toastyConfig: ToastyConfig,
+              private addressService:AddressService) { }
 
   ngOnInit() {
     this.itemCarrinho = this.carrinhoService.ObterItens()
@@ -85,6 +88,17 @@ export class CheckoutComponent implements OnInit {
     }else{
       this.toastyService.error(toastOptions);
     }
+  }
+
+
+  buscaEndereco(cep:string):Address{
+
+    if(cep.length == 8){
+      this.addressService.getAddress(cep)
+      .subscribe(address => this.address = address)
+    }
+    console.log(this.address)
+    return this.address
   }
 
 }

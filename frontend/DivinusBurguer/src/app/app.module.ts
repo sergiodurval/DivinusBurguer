@@ -14,6 +14,7 @@ import { ToastyModule } from 'ng2-toasty'
 import { NotificacaoComponent } from './notificacao/notificacao.component';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { AddressService } from './checkout/address.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
     ToastyModule.forRoot(),
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [FoodService,NotificacaoService,CarrinhoService,{provide:LOCALE_ID,useValue:'pt-BR'}],
+  providers: [FoodService,NotificacaoService,CarrinhoService,AddressService,{provide:LOCALE_ID,useValue:'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
