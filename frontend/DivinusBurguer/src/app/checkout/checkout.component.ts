@@ -4,6 +4,8 @@ import { ItemCarrinho } from '../carrinho/itemCarrinho.model';
 import { ToastyService, ToastyConfig, ToastOptions, ToastData } from 'ng2-toasty';
 import { AddressService } from './address.service';
 import { Address } from './address.model'
+import { Order} from './order.model'
+
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -16,7 +18,10 @@ export class CheckoutComponent implements OnInit {
   quantidadeItens:number = 0
   valorDesconto:number = 0
   cupom:string
-  address: Address
+  address = new Address()
+  listaEstados : Array<string>
+  estadoSelecionado:string
+  formaPagamento:string
 
   constructor(private carrinhoService:CarrinhoService,
               private toastyService:ToastyService, 
@@ -27,6 +32,7 @@ export class CheckoutComponent implements OnInit {
     this.itemCarrinho = this.carrinhoService.ObterItens()
     this.valorTotal = this.carrinhoService.calculoTotal()
     this.quantidadeItens = this.itemCarrinho.length
+    this.listaEstados = this.addressService.getState()
   }
 
   aplicarDesconto(cupom:string):void{
@@ -91,14 +97,20 @@ export class CheckoutComponent implements OnInit {
   }
 
 
-  buscaEndereco(cep:string):Address{
+  buscaEndereco(cep:string):void{
+      if(cep.length == 8){
+        this.addressService.getAddress(cep)
+        .subscribe((data:Address) => this.address = data)
+      }
+  }
 
-    if(cep.length == 8){
-      this.addressService.getAddress(cep)
-      .subscribe(address => this.address = address)
-    }
-    console.log(this.address)
-    return this.address
+  finalizarPedido():void{
+     let newOrder = new Order(this.address,this.formaPagamento,this.itemCarrinho,this.valorTotal);
+     console.log(newOrder);
+  }
+
+  onSelectionChange(payment):void{
+    this.formaPagamento = payment.id
   }
 
 }
