@@ -14,6 +14,7 @@ namespace Divinus.Infra.Persistence
 
         public IDbSet<Food> Foods { get; set; }
         public IDbSet<Address> Address { get; set; }
+        public IDbSet<User> User { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

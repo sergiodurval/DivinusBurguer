@@ -118,13 +118,23 @@
     <Compile Include="Migrations\201906151711482_CriandoTabelaEndereco.Designer.cs">
       <DependentUpon>201906151711482_CriandoTabelaEndereco.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906260321201_TabelaUser.cs" />
+    <Compile Include="Migrations\201906260321201_TabelaUser.Designer.cs">
+      <DependentUpon>201906260321201_TabelaUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906260404323_AjusteTamanhoSenha.cs" />
+    <Compile Include="Migrations\201906260404323_AjusteTamanhoSenha.Designer.cs">
+      <DependentUpon>201906260404323_AjusteTamanhoSenha.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\DivinusContext.cs" />
     <Compile Include="Persistence\Map\MapAddress.cs" />
     <Compile Include="Persistence\Map\MapFood.cs" />
+    <Compile Include="Persistence\Map\MapUser.cs" />
     <Compile Include="Persistence\Repositories\Base\RepositoryBase.cs" />
     <Compile Include="Persistence\Repositories\RepositoryAddress.cs" />
     <Compile Include="Persistence\Repositories\RepositoryFood.cs" />
+    <Compile Include="Persistence\Repositories\RepositoryUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transactions\IUnitOfWork.cs" />
     <Compile Include="Transactions\UnitOfWork.cs" />
@@ -149,6 +159,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906151711482_CriandoTabelaEndereco.resx">
       <DependentUpon>201906151711482_CriandoTabelaEndereco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906260321201_TabelaUser.resx">
+      <DependentUpon>201906260321201_TabelaUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906260404323_AjusteTamanhoSenha.resx">
+      <DependentUpon>201906260404323_AjusteTamanhoSenha.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

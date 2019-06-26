@@ -109,20 +109,25 @@
     <Compile Include="Arguments\Food\AddFoodResponse.cs" />
     <Compile Include="Arguments\Food\FoodResponse.cs" />
     <Compile Include="Arguments\Food\UpdateFoodRequest.cs" />
+    <Compile Include="Arguments\User\RegisterUserRequest.cs" />
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\Base\EntityBase.cs" />
     <Compile Include="Entities\Food.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="Interfaces\Arguments\IRequest.cs" />
     <Compile Include="Interfaces\Arguments\IResponse.cs" />
     <Compile Include="Interfaces\Repositories\Base\IRepositoryBase.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryAddress.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryFood.cs" />
+    <Compile Include="Interfaces\Repositories\IRepositoryUser.cs" />
     <Compile Include="Interfaces\Services\IServiceAddress.cs" />
     <Compile Include="Interfaces\Services\IServiceFood.cs" />
+    <Compile Include="Interfaces\Services\IServiceUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Base\IServiceBase.cs" />
     <Compile Include="Services\ServiceAddress.cs" />
     <Compile Include="Services\ServiceFood.cs" />
+    <Compile Include="Services\ServiceUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

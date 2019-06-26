@@ -231,6 +231,7 @@
     <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\FoodController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\AuthorizationProvider.cs" />
     <Compile Include="Startup.cs" />
