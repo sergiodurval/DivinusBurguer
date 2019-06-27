@@ -37,5 +37,21 @@ namespace Divinus.Api.Controllers
                 return await ResponseExceptionAsync(ex);
             }
         }
+
+        [Route("Authenticate")]
+        [HttpPost]
+        public async Task<HttpResponseMessage> Authenticate(AuthenticateUserRequest request)
+        {
+            try
+            {
+                var response = _serviceUser.AuthenticateUser(request);
+                return await ResponseAsync(response, _serviceUser);
+            }
+            catch (Exception ex)
+            {
+
+                return await ResponseExceptionAsync(ex);
+            }
+        }
     }
 }

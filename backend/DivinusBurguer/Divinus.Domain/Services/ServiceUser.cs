@@ -21,6 +21,36 @@ namespace Divinus.Domain.Services
             _repositoryUser = repositoryUser;
         }
 
+        public AuthenticateUserResponse AuthenticateUser(AuthenticateUserRequest request)
+        {
+            if(request == null)
+            {
+                AddNotification("AuthenticateUserRequest", "Requisição inválida");
+                return null;
+            }
+
+            var user = new User(request.Email, request.Password);
+
+            AddNotifications(user);
+
+            if(user.IsInvalid())
+            {
+                return null;
+            }
+
+            if(!_repositoryUser.Existe(x => x.Email == user.Email && x.Password == user.Password))
+            {
+                AddNotification("User", "Usuário ou senha inválidos");
+                return null;
+            }
+            else
+            {
+                user = _repositoryUser.ObterPor(x => x.Email == user.Email && x.Password == user.Password);
+            }
+
+            return (AuthenticateUserResponse)user;
+        }
+
         public ResponseBase RegisterUser(RegisterUserRequest request)
         {
             if(request == null)
@@ -41,7 +71,7 @@ namespace Divinus.Domain.Services
                 return null;
             }
 
-          user = _repositoryUser.Adicionar(user);
+          _repositoryUser.Adicionar(user);
 
             return new ResponseBase();
         }

@@ -7,5 +7,6 @@ namespace Divinus.Domain.Interfaces.Services
     public interface IServiceUser : IServiceBase
     {
         ResponseBase RegisterUser(RegisterUserRequest request);
+        AuthenticateUserResponse AuthenticateUser(AuthenticateUserRequest request);
     }
 }

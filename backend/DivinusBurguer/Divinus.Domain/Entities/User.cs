@@ -30,7 +30,7 @@ namespace Divinus.Domain.Entities
             }
         }
 
-        public string ConvertToMD5(string passWord)
+        private string ConvertToMD5(string passWord)
         {
             if (string.IsNullOrEmpty(passWord)) return "";
             var password = (passWord += "|2d331cca-f6c0-40c0-bb43-6e32989c2881");

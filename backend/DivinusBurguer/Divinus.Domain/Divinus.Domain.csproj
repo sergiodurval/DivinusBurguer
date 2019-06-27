@@ -109,6 +109,8 @@
     <Compile Include="Arguments\Food\AddFoodResponse.cs" />
     <Compile Include="Arguments\Food\FoodResponse.cs" />
     <Compile Include="Arguments\Food\UpdateFoodRequest.cs" />
+    <Compile Include="Arguments\User\AuthenticateUserRequest.cs" />
+    <Compile Include="Arguments\User\AuthenticateUserResponse.cs" />
     <Compile Include="Arguments\User\RegisterUserRequest.cs" />
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\Base\EntityBase.cs" />
