@@ -15,6 +15,7 @@ import { NotificacaoComponent } from './notificacao/notificacao.component';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { AddressService } from './checkout/address.service';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AddressService } from './checkout/address.service';
     CardapioComponent,
     NotificacaoComponent,
     CarrinhoComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
