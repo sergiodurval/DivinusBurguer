@@ -2,6 +2,7 @@
 using Divinus.IoC.Unity;
 using Microsoft.AspNet.WebApi.Extensions.Compression.Server;
 using Microsoft.Owin;
+using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -20,6 +21,7 @@ namespace Divinus.Api
     {
         public void Configuration(IAppBuilder app)
         {
+            //app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             HttpConfiguration config = new HttpConfiguration();
 
             // Swagger
@@ -33,7 +35,7 @@ namespace Divinus.Api
             ConfigureWebApi(config);
             ConfigureOAuth(app, container);
 
-            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+            //app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
 
             app.UseWebApi(config);
 
@@ -75,6 +77,7 @@ namespace Divinus.Api
 
         public void ConfigureOAuth(IAppBuilder app, UnityContainer container)
         {
+            app.UseCors(CorsOptions.AllowAll);
             OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
             {
                 AllowInsecureHttp = true,

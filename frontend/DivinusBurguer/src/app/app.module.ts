@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule,LOCALE_ID } from '@angular/core';
+import { NgModule,LOCALE_ID, ErrorHandler } from '@angular/core';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import {ROUTES} from './app.routes'
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -16,6 +16,10 @@ import { CarrinhoComponent } from './carrinho/carrinho.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { AddressService } from './checkout/address.service';
 import { LoginComponent } from './login/login.component';
+import { AuthenticationService} from './login/authentication.service'
+import { APP_BASE_HREF, Location } from '@angular/common';
+import {ApplicationErrorHandler} from './app.error-handle';
+import { RegisterComponent } from './register/register.component'
 
 @NgModule({
   declarations: [
@@ -25,17 +29,18 @@ import { LoginComponent } from './login/login.component';
     NotificacaoComponent,
     CarrinhoComponent,
     CheckoutComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     ReactiveFormsModule,
     ToastyModule.forRoot(),
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [FoodService,NotificacaoService,CarrinhoService,AddressService,{provide:LOCALE_ID,useValue:'pt-BR'}],
+  providers: [FoodService,NotificacaoService,CarrinhoService,AddressService,AuthenticationService,{provide:LOCALE_ID,useValue:'pt-BR'},{ provide: APP_BASE_HREF, useValue: window['_app_base'] || '/' },{provide:ErrorHandler,useClass: ApplicationErrorHandler}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

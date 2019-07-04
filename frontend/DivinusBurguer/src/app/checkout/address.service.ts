@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Http , Response  } from "@angular/http";
+import { HttpClient  } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
 import { Address } from "./address.model";
 import { DIVINUSBURGUER_API } from '../app.api'
@@ -8,12 +8,10 @@ import 'rxjs/add/operator/do';
 @Injectable()
 export class AddressService{
     
-    constructor(private http:Http){}
+    constructor(private http:HttpClient){}
     
     getAddress(zipCode:string):Observable<Address>{
-        return this.http.get(`${DIVINUSBURGUER_API}/api/address/Search?zipcode=${zipCode}`)
-        .map((response: Response) => <Address>response.json())
-        .do(data => console.log('endereço: ' + JSON.stringify(data)))
+        return this.http.get<Address>(`${DIVINUSBURGUER_API}/api/address/Search?zipcode=${zipCode}`)
     }
 
     getState():Array<string>{

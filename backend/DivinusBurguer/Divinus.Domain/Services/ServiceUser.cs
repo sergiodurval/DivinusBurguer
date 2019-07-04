@@ -66,7 +66,9 @@ namespace Divinus.Domain.Services
                 AddNotification("e-mail", "este email já está sendo utilizado");
             }
 
-            if(this.IsInvalid())
+            AddNotifications(user);
+
+            if(user.IsInvalid())
             {
                 return null;
             }
