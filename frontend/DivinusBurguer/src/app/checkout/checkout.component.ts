@@ -5,6 +5,9 @@ import { ToastyService, ToastyConfig, ToastOptions, ToastData } from 'ng2-toasty
 import { AddressService } from './address.service';
 import { Address } from './address.model'
 import { Order} from './order.model'
+import { User } from 'app/login/user.model';
+import { AuthenticationService } from 'app/login/authentication.service';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -22,13 +25,30 @@ export class CheckoutComponent implements OnInit {
   listaEstados : Array<string>
   estadoSelecionado:string
   formaPagamento:string
-
+  isLogged : boolean
+  user: User
+  
   constructor(private carrinhoService:CarrinhoService,
               private toastyService:ToastyService, 
               private toastyConfig: ToastyConfig,
-              private addressService:AddressService) { }
+              private addressService:AddressService,
+              private authenticationService: AuthenticationService,
+              private router: Router) {
+                this.router.events.subscribe((e) => {
+                  if (e instanceof NavigationEnd) {
+                      if(this.authenticationService.isLoggedIn()){
+                        this.user = this.authenticationService.getUser()
+                      }
+                  }
+               });
+               
+               }
 
   ngOnInit() {
+    if(this.user != undefined){
+      this.isLogged = true
+    }
+    
     this.itemCarrinho = this.carrinhoService.ObterItens()
     this.valorTotal = this.carrinhoService.calculoTotal()
     this.quantidadeItens = this.itemCarrinho.length
@@ -112,5 +132,10 @@ export class CheckoutComponent implements OnInit {
   onSelectionChange(payment):void{
     this.formaPagamento = payment.id
   }
+
+  logoff():void{
+    this.authenticationService.logoff()
+    this.router.navigate(['/'])
+ }
 
 }

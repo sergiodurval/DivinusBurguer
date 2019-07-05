@@ -37,15 +37,15 @@
                   </div>
                            <form #f="ngForm" (ngSubmit)="login()">
                                    <div class="form-group">
-                                      <label for="exampleInputEmail1">Email</label>
+                                      <label for="email">Email</label>
                                       <input type="email" name="email" #email="ngModel"  class="form-control" id="email" [(ngModel)]="user.email" aria-describedby="emailHelp" placeholder="email" required>
                                    </div>
                                    <div *ngIf="!email.valid && email.touched">
                                      Email obrigatório
                                    </div>
                                    <div class="form-group">
-                                      <label for="exampleInputEmail1">Password</label>
-                                      <input type="password" name="password" #password="ngModel" id="password" [(ngModel)]="user.password"  class="form-control" aria-describedby="emailHelp" placeholder="Senha" required>
+                                      <label for="password">Password</label>
+                                      <input type="password" name="password" #password="ngModel" id="password" [(ngModel)]="user.password"  class="form-control" aria-describedby="emailHelp" placeholder="Senha"  required>
                                    </div>
                                    <div *ngIf="!password.valid && password.touched">
                                      Senha obrigatório
