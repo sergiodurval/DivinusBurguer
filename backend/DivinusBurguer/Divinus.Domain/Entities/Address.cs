@@ -10,7 +10,7 @@ namespace Divinus.Domain.Entities
 {
     public class Address : EntityBase
     {
-        public Address(string zipCode, string publicPlace, string neighborhood, string state, string locality, long gia, long ibge, string complement)
+        public Address(string zipCode, string publicPlace, string neighborhood, string state, string locality, long gia, long ibge, string complement , long? number = 0 , string reference = null)
         {
             ZipCode = zipCode;
             PublicPlace = publicPlace;
@@ -20,7 +20,8 @@ namespace Divinus.Domain.Entities
             Gia = gia;
             Ibge = ibge;
             Complement = complement;
-
+            Number = number;
+            Reference = string.IsNullOrEmpty(reference) ? string.Empty : reference;
 
             new AddNotifications<Address>(this)
                 .IfNullOrEmpty(x => x.ZipCode, "Cep obrigatório")
@@ -47,5 +48,7 @@ namespace Divinus.Domain.Entities
         public long Gia { get; private set; }
         public long Ibge { get; private set; }
         public string Complement { get; private set; }
+        public long? Number { get; private set; }
+        public string Reference { get; private set; }
     }
 }

@@ -48,7 +48,7 @@ export class CheckoutComponent implements OnInit {
     if(this.user != undefined){
       this.isLogged = true
     }
-    
+
     this.itemCarrinho = this.carrinhoService.ObterItens()
     this.valorTotal = this.carrinhoService.calculoTotal()
     this.quantidadeItens = this.itemCarrinho.length
@@ -125,8 +125,9 @@ export class CheckoutComponent implements OnInit {
   }
 
   finalizarPedido():void{
-     let newOrder = new Order(this.address,this.formaPagamento,this.itemCarrinho,this.valorTotal);
+     let newOrder = new Order(this.address,this.formaPagamento,this.itemCarrinho,this.valorTotal,this.user.id);
      console.log(newOrder);
+     console.log(JSON.stringify(newOrder))
   }
 
   onSelectionChange(payment):void{

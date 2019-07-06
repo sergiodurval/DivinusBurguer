@@ -7,5 +7,6 @@ export class Order{
         public address:Address,
         public paymentMethod:string,
         public itensCarrinho:Array<ItemCarrinho>,
-        public valorTotal:number){}
+        public valorTotal:number,
+        public idUser:string){}
 }

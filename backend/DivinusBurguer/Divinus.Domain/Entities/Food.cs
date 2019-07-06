@@ -53,8 +53,9 @@ namespace Divinus.Domain.Entities
 
         public string ImageName { get; private set; }
 
-        public string Category { get; set; }
+        public string Category { get; private set; }
 
+        public int Quantity { get; private set; }
 
     }
 }

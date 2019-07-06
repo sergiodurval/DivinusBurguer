@@ -34,13 +34,14 @@ namespace Divinus.IoC.Unity
             container.RegisterType<IServiceFood, ServiceFood>(new HierarchicalLifetimeManager());
             container.RegisterType<IServiceAddress, ServiceAddress>(new HierarchicalLifetimeManager());
             container.RegisterType<IServiceUser, ServiceUser>(new HierarchicalLifetimeManager());
+            container.RegisterType<IServiceOrder, ServiceOrder>(new HierarchicalLifetimeManager());
 
             //Repository
             container.RegisterType(typeof(IRepositoryBase<,>), typeof(RepositoryBase<,>));
             container.RegisterType<IRepositoryFood, RepositoryFood>(new HierarchicalLifetimeManager());
             container.RegisterType<IRepositoryAddress, RepositoryAddress>(new HierarchicalLifetimeManager());
             container.RegisterType<IRepositoryUser, RepositoryUser>(new HierarchicalLifetimeManager());
-
+            container.RegisterType<IRepositoryOrder, RepositoryOrder>(new HierarchicalLifetimeManager());
 
         }
     }
