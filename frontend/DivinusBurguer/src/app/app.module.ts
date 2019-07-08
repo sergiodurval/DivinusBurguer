@@ -20,7 +20,8 @@ import { AuthenticationService} from './login/authentication.service'
 import { APP_BASE_HREF, Location } from '@angular/common';
 import {ApplicationErrorHandler} from './app.error-handle';
 import { RegisterComponent } from './register/register.component'
-import { OrderService } from './checkout/order.service'
+import { OrderService } from './checkout/order.service';
+import { OrderSummaryComponent } from './order-summary/order-summary.component'
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { OrderService } from './checkout/order.service'
     CarrinhoComponent,
     CheckoutComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    OrderSummaryComponent
   ],
   imports: [
     BrowserModule,

@@ -67,6 +67,7 @@ export class CarrinhoComponent implements OnInit {
   
   logoff():void{
     this.authenticationService.logoff()
+    this.carrinhoService.esvaziarCarrinho()
     this.router.navigate(['/'])
  }
 

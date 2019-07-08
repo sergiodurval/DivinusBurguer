@@ -130,8 +130,12 @@ export class CheckoutComponent implements OnInit {
   finalizarPedido():void{
      let purchaseOrderList = new PurchaseOrder().convertToPurchaseOrder(this.itemCarrinho)
      let newOrder = new Order(this.address,this.formaPagamento,purchaseOrderList,this.valorTotal,this.user.id);
-     this.orderService.createOrder(newOrder,this.user.token).subscribe(data =>{
-         console.log(data)
+     let numeroPedido :any
+     this.orderService.createOrder(newOrder,this.user.token)
+     .subscribe(data =>{
+       numeroPedido = data
+       this.carrinhoService.esvaziarCarrinho()
+       this.router.navigate([`order-summary/${numeroPedido.orderNumber}`])
      });
   }
 
@@ -141,6 +145,7 @@ export class CheckoutComponent implements OnInit {
 
   logoff():void{
     this.authenticationService.logoff()
+    this.carrinhoService.esvaziarCarrinho()
     this.router.navigate(['/'])
  }
 

@@ -153,11 +153,8 @@ namespace Divinus.Infra.Persistence.Repositories
             //fim do xml
             writer.WriteEndDocument();
             writer.Flush();
-            XmlDocument orderXml = new XmlDocument();
-            string xmlTeste = sw.ToString();
-            return xmlTeste;
-            //orderXml.LoadXml(sw.ToString());
-            //return orderXml;
+            string orderXml = sw.ToString();
+            return orderXml;
         }
     }
 }

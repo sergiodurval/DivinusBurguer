@@ -70,5 +70,9 @@ export class CarrinhoService{
        return false
     }
 
+    esvaziarCarrinho():void{
+      this.itemCarrinho = []
+    }
+
 
 }
