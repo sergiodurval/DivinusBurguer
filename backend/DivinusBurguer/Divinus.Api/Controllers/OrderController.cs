@@ -24,6 +24,7 @@ namespace Divinus.Api.Controllers
 
         [Route("CreateOrder")]
         [HttpPost]
+        [Authorize]
         public async Task<HttpResponseMessage> CreateOrder(CreateOrderRequest request)
         {
             try

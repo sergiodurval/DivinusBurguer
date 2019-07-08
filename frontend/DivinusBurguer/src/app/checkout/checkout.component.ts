@@ -8,6 +8,8 @@ import { Order} from './order.model'
 import { User } from 'app/login/user.model';
 import { AuthenticationService } from 'app/login/authentication.service';
 import { Router, NavigationEnd } from '@angular/router';
+import { OrderService } from './order.service';
+import { PurchaseOrder } from './purchaseOrder.model';
 
 @Component({
   selector: 'app-checkout',
@@ -33,7 +35,8 @@ export class CheckoutComponent implements OnInit {
               private toastyConfig: ToastyConfig,
               private addressService:AddressService,
               private authenticationService: AuthenticationService,
-              private router: Router) {
+              private router: Router,
+              private orderService: OrderService) {
                 this.router.events.subscribe((e) => {
                   if (e instanceof NavigationEnd) {
                       if(this.authenticationService.isLoggedIn()){
@@ -125,9 +128,11 @@ export class CheckoutComponent implements OnInit {
   }
 
   finalizarPedido():void{
-     let newOrder = new Order(this.address,this.formaPagamento,this.itemCarrinho,this.valorTotal,this.user.id);
-     console.log(newOrder);
-     console.log(JSON.stringify(newOrder))
+     let purchaseOrderList = new PurchaseOrder().convertToPurchaseOrder(this.itemCarrinho)
+     let newOrder = new Order(this.address,this.formaPagamento,purchaseOrderList,this.valorTotal,this.user.id);
+     this.orderService.createOrder(newOrder,this.user.token).subscribe(data =>{
+         console.log(data)
+     });
   }
 
   onSelectionChange(payment):void{

@@ -127,6 +127,14 @@
     <Compile Include="Migrations\201906260404323_AjusteTamanhoSenha.Designer.cs">
       <DependentUpon>201906260404323_AjusteTamanhoSenha.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907081528239_novasColunas.cs" />
+    <Compile Include="Migrations\201907081528239_novasColunas.Designer.cs">
+      <DependentUpon>201907081528239_novasColunas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907081551588_ajusteNaColunaQuantidade.cs" />
+    <Compile Include="Migrations\201907081551588_ajusteNaColunaQuantidade.Designer.cs">
+      <DependentUpon>201907081551588_ajusteNaColunaQuantidade.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\DivinusContext.cs" />
     <Compile Include="Persistence\Map\MapAddress.cs" />
@@ -167,6 +175,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906260404323_AjusteTamanhoSenha.resx">
       <DependentUpon>201906260404323_AjusteTamanhoSenha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907081528239_novasColunas.resx">
+      <DependentUpon>201907081528239_novasColunas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907081551588_ajusteNaColunaQuantidade.resx">
+      <DependentUpon>201907081551588_ajusteNaColunaQuantidade.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

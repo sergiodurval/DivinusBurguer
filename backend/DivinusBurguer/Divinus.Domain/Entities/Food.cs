@@ -55,7 +55,7 @@ namespace Divinus.Domain.Entities
 
         public string Category { get; private set; }
 
-        public int Quantity { get; private set; }
+        public int? Quantity { get; private set; }
 
     }
 }

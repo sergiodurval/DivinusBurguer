@@ -9,6 +9,7 @@ import 'rxjs/add/operator/do'
 export class AuthenticationService{
     user : User
     mensagemBoasVindas : boolean
+    token:string
 
     constructor(private http:HttpClient){
         this.mensagemBoasVindas = true
@@ -29,6 +30,10 @@ export class AuthenticationService{
 
     getUser():User{
         return this.user
+    }
+
+    setUser(user:User){
+        this.user = user
     }
 
     login(user:User):Observable<User>{

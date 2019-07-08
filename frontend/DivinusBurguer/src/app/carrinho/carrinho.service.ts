@@ -11,7 +11,11 @@ export class CarrinhoService{
         var item = new ItemCarrinho()
         item.food = food
         item.quantidade = 1
-        this.itemCarrinho.push(item)
+        if(this.containsFood(food) && this.itemCarrinho.length != 0){
+          this.incrementarQuantidade(food.id)
+        }else{
+          this.itemCarrinho.push(item)
+        } 
     }
 
     ObterItens():ItemCarrinho[]{
@@ -54,6 +58,16 @@ export class CarrinhoService{
       }
       
       return total
+    }
+
+
+    containsFood(food:Food):boolean{
+       for(let f of this.itemCarrinho){
+           if(f.food.id == food.id){
+             return true
+           }
+       }
+       return false
     }
 
 

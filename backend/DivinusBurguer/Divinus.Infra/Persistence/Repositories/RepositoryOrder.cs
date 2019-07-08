@@ -73,9 +73,9 @@ namespace Divinus.Infra.Persistence.Repositories
             writer.WriteStartDocument(true);
             writer.WriteStartElement("Order");
             writer.WriteStartElement("cartItens");
-            writer.WriteStartElement("Food");
             foreach (Food food in order.PurchaseOrder)
             {
+                writer.WriteStartElement("Food");
                 writer.WriteStartElement("id");
                 writer.WriteString(food.Id.ToString());
                 writer.WriteEndElement();
@@ -97,9 +97,10 @@ namespace Divinus.Infra.Persistence.Repositories
                 writer.WriteStartElement("quantity");
                 writer.WriteString(food.Quantity.ToString());
                 writer.WriteEndElement();
+                writer.WriteEndElement();
             }
 
-            writer.WriteEndElement();// fim food
+            //writer.WriteEndElement();// fim food
             writer.WriteEndElement();// fim orderItem
             writer.WriteStartElement("address");//endereço
             writer.WriteStartElement("zipCode");

@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
             this.authenticationService.getToken()
             .subscribe(t => {
               this.user.token = t.access_token
+              this.authenticationService.setUser(this.user)
               this.router.navigate(['/cardapio'])
             })
          }

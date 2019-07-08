@@ -16,6 +16,7 @@ namespace Divinus.Infra.Persistence.Map
             Property(p => p.Complement).HasMaxLength(250);
             Property(p => p.Ibge);
             Property(p => p.Gia);
+            Property(p => p.Reference).HasMaxLength(250);
         }
     }
 }

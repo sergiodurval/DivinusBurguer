@@ -52,6 +52,7 @@ namespace Divinus.Infra.Persistence
             //        modelBuilder.Configurations.Add(instance);
             //    });
             #endregion
+            Database.SetInitializer<DivinusContext>(null);
             base.OnModelCreating(modelBuilder);
         }
     }
