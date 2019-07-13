@@ -40,6 +40,15 @@ namespace Divinus.Domain.Entities
                 
         }
 
+        public Order(Guid idUser,List<Food> purchaseOrder , string paymentMethod , decimal totalValue , DateTime orderDate)
+        {
+            IdUser = idUser;
+            PurchaseOrder = purchaseOrder;
+            PaymentMethod = paymentMethod;
+            TotalValue = totalValue;
+            OrderDate = OrderDate;
+        }
+
         protected Order() { }
     }
 }

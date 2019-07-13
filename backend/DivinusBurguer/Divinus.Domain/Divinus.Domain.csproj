@@ -116,6 +116,8 @@
     <Compile Include="Arguments\Order\CreateOrderResponse.cs" />
     <Compile Include="Arguments\Order\Address.cs" />
     <Compile Include="Arguments\Order\Food.cs" />
+    <Compile Include="Arguments\Order\HistoryOrderRequest.cs" />
+    <Compile Include="Arguments\Order\HistoryOrderResponse.cs" />
     <Compile Include="Arguments\User\AuthenticateUserRequest.cs" />
     <Compile Include="Arguments\User\AuthenticateUserResponse.cs" />
     <Compile Include="Arguments\User\RegisterUserRequest.cs" />

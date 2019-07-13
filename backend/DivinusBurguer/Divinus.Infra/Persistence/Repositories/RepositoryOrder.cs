@@ -61,7 +61,34 @@ namespace Divinus.Infra.Persistence.Repositories
 
         public List<Order> ObterTodosPedidos(Guid idUser)
         {
-            throw new NotImplementedException();
+            try
+            {
+                List<Order> listOrder = new List<Order>();
+                using (SqlConnection conn = new SqlConnection(strConnection))
+                {
+                    SqlCommand command = new SqlCommand("Select [IdUser],[OrderNumber],[PurchaseOrder],[OrderDate] from [Divinus].[dbo].[Order] where [Id] = @idUser", conn);
+                    command.Parameters.AddWithValue("@idUser", idUser);
+                    conn.Open();
+                    SqlDataReader dr = command.ExecuteReader();
+                    while(dr.Read())
+                    {
+                        List<Food> purchaseOrder = GetPurchaseOrder(dr["PurchaseOrder"].ToString());
+                        decimal totalValue = GetTotalValue(dr["PurchaseOrder"].ToString());
+                        string paymentMethod = GetPaymentMethod(dr["PurchaseOrder"].ToString());
+                        DateTime orderDate = Convert.ToDateTime(dr["OrderDate"].ToString());
+                        Order order = new Order(idUser, purchaseOrder, paymentMethod, totalValue, orderDate);
+                        listOrder.Add(order);
+                    }
+                    dr.Close();
+                    command.Dispose();
+                    return listOrder;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public string CreateXmlOrder(Order order)
@@ -155,6 +182,44 @@ namespace Divinus.Infra.Persistence.Repositories
             writer.Flush();
             string orderXml = sw.ToString();
             return orderXml;
+        }
+
+        public List<Food> GetPurchaseOrder(string xml)
+        {
+            List<Food> listFood = new List<Food>();
+            XmlDocument xmlOrder = new XmlDocument();
+            xmlOrder.LoadXml(xml);
+            XmlElement root = xmlOrder.DocumentElement;
+            XmlNodeList nodes = root.SelectNodes("//Food");
+            foreach(XmlNode node in nodes)
+            {
+                Food food = new Food(node["name"].InnerText, 
+                    node["description"].InnerText, 
+                    Convert.ToDecimal(node["price"].InnerText), 
+                    node["imageName"].InnerText, 
+                    node["category"].InnerText);
+
+                listFood.Add(food);
+            }
+            return listFood;
+        }
+
+        public string GetPaymentMethod(string xml)
+        {
+            XmlDocument xmlOrder = new XmlDocument();
+            xmlOrder.LoadXml(xml);
+            XmlElement root = xmlOrder.DocumentElement;
+            XmlNode node = xmlOrder.SelectSingleNode("//paymentMethod");
+            return node.InnerText;
+        }
+
+        public decimal GetTotalValue(string xml)
+        {
+            XmlDocument xmlOrder = new XmlDocument();
+            xmlOrder.LoadXml(xml);
+            XmlElement root = xmlOrder.DocumentElement;
+            XmlNode node = xmlOrder.SelectSingleNode("//totalValue");
+            return Convert.ToDecimal(node.InnerText);
         }
     }
 }

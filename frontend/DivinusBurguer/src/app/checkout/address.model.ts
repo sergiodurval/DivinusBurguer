@@ -7,4 +7,6 @@ export class Address{
     gia:number
     ibge:number
     complement:string
+    number:number
+    reference:string
 }

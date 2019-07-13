@@ -52,8 +52,9 @@ namespace Divinus.Domain.Services
 
         }
 
-
-
-
+        public HistoryOrderResponse HistoryOrder(HistoryOrderRequest request)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

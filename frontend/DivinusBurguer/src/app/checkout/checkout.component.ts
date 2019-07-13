@@ -128,15 +128,20 @@ export class CheckoutComponent implements OnInit {
   }
 
   finalizarPedido():void{
-     let purchaseOrderList = new PurchaseOrder().convertToPurchaseOrder(this.itemCarrinho)
-     let newOrder = new Order(this.address,this.formaPagamento,purchaseOrderList,this.valorTotal,this.user.id);
-     let numeroPedido :any
-     this.orderService.createOrder(newOrder,this.user.token)
-     .subscribe(data =>{
-       numeroPedido = data
-       this.carrinhoService.esvaziarCarrinho()
-       this.router.navigate([`order-summary/${numeroPedido.orderNumber}`])
-     });
+    console.log('caiu aqui')
+     if(this.validateOrder()){
+      let purchaseOrderList = new PurchaseOrder().convertToPurchaseOrder(this.itemCarrinho)
+      let newOrder = new Order(this.address,this.formaPagamento,purchaseOrderList,this.valorTotal,this.user.id);
+      let numeroPedido :any
+      this.orderService.createOrder(newOrder,this.user.token)
+      .subscribe(data =>{
+        numeroPedido = data
+        this.carrinhoService.esvaziarCarrinho()
+        this.router.navigate([`order-summary/${numeroPedido.orderNumber}`])
+      });
+
+     }
+     
   }
 
   onSelectionChange(payment):void{
@@ -149,4 +154,34 @@ export class CheckoutComponent implements OnInit {
     this.router.navigate(['/'])
  }
 
-}
+ validateOrder():boolean{
+    
+    if(this.address.number == undefined){
+      this.addToast('aviso','número obrigatório','erro')
+      return false
+    }else if(this.address.locality == undefined || this.address.locality == ''){
+      this.addToast('aviso','cidade','erro')
+      return false
+    }else if(this.address.neighborhood == undefined || this.address.neighborhood == ''){
+      this.addToast('aviso','bairro','erro')
+      return false
+    }else if(this.address.state == undefined || this.address.state == '' ){
+      this.addToast('aviso','estado','erro')
+      return false
+    }else if(this.address.zipCode == undefined || this.address.zipCode == ''){
+      this.addToast('aviso','cep','erro')
+      return false 
+    }else if(this.formaPagamento == undefined || this.formaPagamento == ''){
+      this.addToast('aviso','selecione a forma de pagamento','erro')
+      return false
+    }
+    else if(this.user == undefined){
+      this.addToast('aviso','faço login para concluir o pedido','erro')
+      return false
+    }
+    return true
+ }
+
+ }
+
+
