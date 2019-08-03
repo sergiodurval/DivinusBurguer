@@ -66,7 +66,7 @@ namespace Divinus.Infra.Persistence.Repositories
                 List<Order> listOrder = new List<Order>();
                 using (SqlConnection conn = new SqlConnection(strConnection))
                 {
-                    SqlCommand command = new SqlCommand("Select [IdUser],[OrderNumber],[PurchaseOrder],[OrderDate] from [Divinus].[dbo].[Order] where [Id] = @idUser", conn);
+                    SqlCommand command = new SqlCommand("Select [IdUser],[OrderNumber],[PurchaseOrder],[OrderDate] from [Divinus].[dbo].[Order] where [IdUser] = @idUser", conn);
                     command.Parameters.AddWithValue("@idUser", idUser);
                     conn.Open();
                     SqlDataReader dr = command.ExecuteReader();
@@ -76,7 +76,8 @@ namespace Divinus.Infra.Persistence.Repositories
                         decimal totalValue = GetTotalValue(dr["PurchaseOrder"].ToString());
                         string paymentMethod = GetPaymentMethod(dr["PurchaseOrder"].ToString());
                         DateTime orderDate = Convert.ToDateTime(dr["OrderDate"].ToString());
-                        Order order = new Order(idUser, purchaseOrder, paymentMethod, totalValue, orderDate);
+                        int orderNumber = Convert.ToInt32(dr["OrderNumber"]);
+                        Order order = new Order(idUser, purchaseOrder, paymentMethod, totalValue, orderDate,orderNumber);
                         listOrder.Add(order);
                     }
                     dr.Close();

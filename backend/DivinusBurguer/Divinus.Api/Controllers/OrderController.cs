@@ -38,5 +38,22 @@ namespace Divinus.Api.Controllers
                 return await ResponseExceptionAsync(ex);
             }
         }
+
+        [Route("OrderHistory")]
+        [HttpGet]
+        public async Task<HttpResponseMessage> OrderHistory(Guid id)
+        {
+            try
+            {
+                HistoryOrderRequest request = new HistoryOrderRequest() { Id = id };
+                var response = _serviceOrder.HistoryOrder(request);
+                return await ResponseAsync(response, _serviceOrder);
+            }
+            catch (Exception ex)
+            {
+
+                return await ResponseExceptionAsync(ex);
+            }
+        }
     }
 }

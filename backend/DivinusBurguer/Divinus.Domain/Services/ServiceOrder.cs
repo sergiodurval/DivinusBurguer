@@ -52,9 +52,27 @@ namespace Divinus.Domain.Services
 
         }
 
-        public HistoryOrderResponse HistoryOrder(HistoryOrderRequest request)
+        public List<HistoryOrderResponse> HistoryOrder(HistoryOrderRequest request)
         {
-            throw new NotImplementedException();
+            if(request == null)
+            {
+                AddNotification("HistoryOrderRequest", "HistoryOrderRequest inválido");
+                return null;
+            }
+
+            List<Order> listOrder = _repositoryOrder.ObterTodosPedidos(request.Id);
+            List<HistoryOrderResponse> Listresponse = new List<HistoryOrderResponse>();
+            var response = new HistoryOrderResponse();
+            foreach (Order order in listOrder)
+            {
+                response.Foods = Mapper.Map<List<Divinus.Domain.Entities.Food>,List<Divinus.Domain.Arguments.Order.Food>>(order.PurchaseOrder);
+                response.OrderDate = order.OrderDate;
+                response.OrderNumber = order.OrderNumber;
+                response.PaymentMethod = order.PaymentMethod;
+                response.TotalValue = order.TotalValue;
+                Listresponse.Add(response);
+            }
+            return Listresponse;
         }
     }
 }
