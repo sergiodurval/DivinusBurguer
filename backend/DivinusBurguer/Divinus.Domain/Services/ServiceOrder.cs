@@ -62,9 +62,9 @@ namespace Divinus.Domain.Services
 
             List<Order> listOrder = _repositoryOrder.ObterTodosPedidos(request.Id);
             List<HistoryOrderResponse> Listresponse = new List<HistoryOrderResponse>();
-            var response = new HistoryOrderResponse();
             foreach (Order order in listOrder)
             {
+                var response = new HistoryOrderResponse();
                 response.Foods = Mapper.Map<List<Divinus.Domain.Entities.Food>,List<Divinus.Domain.Arguments.Order.Food>>(order.PurchaseOrder);
                 response.OrderDate = order.OrderDate;
                 response.OrderNumber = order.OrderNumber;

@@ -66,7 +66,7 @@ namespace Divinus.Infra.Persistence.Repositories
                 List<Order> listOrder = new List<Order>();
                 using (SqlConnection conn = new SqlConnection(strConnection))
                 {
-                    SqlCommand command = new SqlCommand("Select [IdUser],[OrderNumber],[PurchaseOrder],[OrderDate] from [Divinus].[dbo].[Order] where [IdUser] = @idUser", conn);
+                    SqlCommand command = new SqlCommand("Select [IdUser],[OrderNumber],[PurchaseOrder],[OrderDate] from [Divinus].[dbo].[Order] where [IdUser] = @idUser Order By [OrderDate] desc", conn);
                     command.Parameters.AddWithValue("@idUser", idUser);
                     conn.Open();
                     SqlDataReader dr = command.ExecuteReader();
@@ -198,7 +198,8 @@ namespace Divinus.Infra.Persistence.Repositories
                     node["description"].InnerText, 
                     Convert.ToDecimal(node["price"].InnerText), 
                     node["imageName"].InnerText, 
-                    node["category"].InnerText);
+                    node["category"].InnerText,
+                    Convert.ToInt32(node["quantity"].InnerText));
 
                 listFood.Add(food);
             }
