@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">DivinusBurguer</a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/carrinho']">Meu carrinho</a>
+      </li>
+      <li class="nav-item" *ngIf="isLogged">
+        <a class="nav-link" href="#"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{user.email}}
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="isLogged">
+        <a class="nav-link" [routerLink]="['/historico']">Histórico de pedidos<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item" *ngIf="isLogged">
+        <a class="nav-link" href="javascript:void(0);" (click)="logoff()">Sair</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container" style="background-color: white">
+  <br>
+  <div class="list-group" *ngFor="let history of foodHistory;let i = index">
+    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Número do pedido {{history.orderNumber}}</h5>
+        <small>{{history.orderDate | date : 'dd/MM/yyyy'}}</small>
+      </div>
+      <p class="mb-1" *ngFor="let food of foodHistory[i].foods">{{food.quantity}}x - {{food.name}}</p>
+      <small>Valor total {{history.totalValue | currency:'BRL':true}}</small>
+    </a>
+  </div>
+</div>

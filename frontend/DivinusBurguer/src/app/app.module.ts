@@ -21,7 +21,9 @@ import { APP_BASE_HREF, Location } from '@angular/common';
 import {ApplicationErrorHandler} from './app.error-handle';
 import { RegisterComponent } from './register/register.component'
 import { OrderService } from './checkout/order.service';
-import { OrderSummaryComponent } from './order-summary/order-summary.component'
+import { OrderSummaryComponent } from './order-summary/order-summary.component';
+import { HistoricoComponent } from './historico/historico.component'
+import { FoodHistoryService } from './historico/foodHistory.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component'
     CheckoutComponent,
     LoginComponent,
     RegisterComponent,
-    OrderSummaryComponent
+    OrderSummaryComponent,
+    HistoricoComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,7 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component'
     ToastyModule.forRoot(),
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [FoodService,NotificacaoService,CarrinhoService,AddressService,AuthenticationService,OrderService,{provide:LOCALE_ID,useValue:'pt-BR'},{ provide: APP_BASE_HREF, useValue: window['_app_base'] || '/' },{provide:ErrorHandler,useClass: ApplicationErrorHandler}],
+  providers: [FoodService,NotificacaoService,CarrinhoService,AddressService,AuthenticationService,OrderService,FoodHistoryService,{provide:LOCALE_ID,useValue:'pt-BR'},{ provide: APP_BASE_HREF, useValue: window['_app_base'] || '/' },{provide:ErrorHandler,useClass: ApplicationErrorHandler}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

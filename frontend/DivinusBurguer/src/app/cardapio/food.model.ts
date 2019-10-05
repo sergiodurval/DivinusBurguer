@@ -5,4 +5,5 @@ export class Food{
     price:number
     imageName:string
     category:string
+    quantity:number
 }
